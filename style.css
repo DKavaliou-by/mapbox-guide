@@ -7,3 +7,17 @@ h2 {
   width: 600px;
   height: 600px;
 }
+
+.rectangle-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 35px;
+  width: 58px;
+  color: white;
+  font-size: 15px;
+  border-radius: 10px;
+  background-color: #11874d;
+  cursor: pointer;
+}
