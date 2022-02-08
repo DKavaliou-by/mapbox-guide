@@ -11,6 +11,7 @@ mapboxgl.accessToken = CONFIG.MAPBOX_TOKEN;
 const map = new mapboxgl.Map({
   container: 'map',
   style: CONFIG.MAP_STYLE,
+  // Coordinates to centered a map (Took from PH API)
   center: [phApiMock.coordinates.longitude, phApiMock.coordinates.latitude],
   zoom: 14,
 });
@@ -62,7 +63,25 @@ const createBasicMarker = (marker): HTMLElement => {
 
 const markers = [];
 
-map.once('load', () => {
+// To check next examples comment all example and uncomment interested
+
+// Example 1
+// Map with simple geodata markers
+// map.on('load', () => {
+//   map.addSource('properties', {
+//     type: 'geojson',
+//     data: {
+//       type: 'FeatureCollection',
+//       features: [...geoData],
+//     },
+//   });
+
+//   map.addLayer(getCircleLayerConfig('#11874D'));
+// });
+
+// Example 2
+// Map with html markers based on geodata markers
+map.on('load', () => {
   map.addSource('properties', {
     type: 'geojson',
     data: {
@@ -71,7 +90,6 @@ map.once('load', () => {
     },
   });
 
-  // map.addLayer(getCircleLayerConfig('#11874D'));
   map.addLayer(getCircleLayerConfig());
 
   geoData.forEach((marker) => {
