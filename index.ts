@@ -76,6 +76,11 @@ map.once('load', () => {
 
   geoData.forEach((marker) => {
     const element = createBasicMarker(marker);
+
+    element.addEventListener('click', (event: MouseEvent) => {
+      console.log(event.target);
+    });
+
     const newMarker = new mapboxgl.Marker(element).setLngLat(
       marker.geometry.coordinates
     );
