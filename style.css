@@ -1,3 +1,9 @@
-h1, h2 {
+h1,
+h2 {
   font-family: Lato;
+}
+
+#map {
+  width: 600px;
+  height: 600px;
 }
