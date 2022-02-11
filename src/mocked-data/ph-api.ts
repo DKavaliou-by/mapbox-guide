@@ -3,6 +3,8 @@ export const coordinates = {
   longitude: 8.5567768,
 };
 
+// For more details and params you could check open Pricehubble documentation
+// https://docs.pricehubble.com/international/offer_search/
 export const phApiMock = {
   message:
     'Request tracing PHApiClienthttps://api.pricehubble.com/api/v1/offers/search?access_token=****',
