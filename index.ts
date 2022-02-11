@@ -1,7 +1,7 @@
 // Import stylesheets
 import './style.css';
 import { CONFIG } from './src/config';
-import { phApiMock } from './src/mocked-data/ph-api';
+import { phApiMock, coordinates } from './src/mocked-data/ph-api';
 
 import mapboxgl from 'mapbox-gl';
 import { formatPrice } from './src/utils/data.utils';
@@ -12,18 +12,18 @@ const map = new mapboxgl.Map({
   container: 'map',
   style: CONFIG.MAP_STYLE,
   // Coordinates to centered a map (Took from PH API)
-  center: [phApiMock.coordinates.longitude, phApiMock.coordinates.latitude],
-  zoom: 14,
+  center: [coordinates.longitude, coordinates.latitude],
+  zoom: 10,
 });
 
 // Format PH APi data with geodata to geomarkers for Mapbox
-const geoData = phApiMock.items.map((item, index) => {
+const geoData = phApiMock.response.body.items.map((item, index) => {
   return {
     type: 'Feature',
     properties: {
-      value: formatPrice(item.price),
+      value: formatPrice(item.salePrice),
       id: index,
-      propertyId: item.id,
+      propertyId: item.offerId,
     },
     geometry: {
       type: 'Point',
